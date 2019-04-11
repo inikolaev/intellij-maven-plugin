@@ -2,10 +2,12 @@
   <id>com.github.inikolaev.intellij.maven</id>
   <name>Maven Plugin for IntelliJ</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor url="https://github.com/inikolaev">Igor Nikolaev</vendor>
 
   <description><![CDATA[
-      Maven plugin for IntelliJ
+      <h1>Maven Plugin for IntelliJ</h1>
+      <a href="https://github.com/inikolaev/intellij-maven-plugin">GitHub</a> |
+      <a href="https://github.com/inikolaev/intellij-maven-plugin/issues">Issues</a>
     ]]></description>
 
   <change-notes><![CDATA[
