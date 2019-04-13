@@ -1,14 +1,10 @@
 package com.github.inikolaev.intellij.maven
 
 import org.apache.maven.model.Parent
-import java.awt.GridLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
-import javax.swing.BorderFactory
 import javax.swing.BoxLayout
-import javax.swing.JLabel
 import javax.swing.JPanel
-import javax.swing.JTextArea
 import javax.swing.JTextField
 
 fun JTextField.addChangeListener(listener: () -> Unit) {
@@ -22,28 +18,13 @@ fun JTextField.addChangeListener(listener: () -> Unit) {
 class OverviewEditor(name: String) : AbstractEditor(name) {
     private val artifactPanel = ArtifactPanel()
     private val parentPanel = ParentPanel()
-
-    private val projectPanel = JPanel(GridLayout(0, 2)).apply {
-        border = BorderFactory.createTitledBorder("Project")
-
-        add(JLabel("Name:"))
-        add(JTextField())
-
-        add(JLabel("URL:"))
-        add(JTextField())
-
-        add(JLabel("Description:"))
-        add(JTextArea(null, 4, 0))
-
-        add(JLabel("Inception:"))
-        add(JTextField())
-    }
+    private val projectPanel = ProjectPanel()
 
     private val overviewPanel = JPanel().apply {
         layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        add(artifactPanel)
-        add(parentPanel)
-        add(projectPanel)
+        add(artifactPanel.createPanel())
+        add(parentPanel.createPanel())
+        add(projectPanel.createPanel())
     }
 
     override fun getComponent(): JPanel {

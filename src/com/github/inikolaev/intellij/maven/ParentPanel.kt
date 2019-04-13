@@ -1,11 +1,9 @@
 package com.github.inikolaev.intellij.maven
-import java.awt.GridLayout
-import javax.swing.BorderFactory
+import com.intellij.ui.OptionGroup
 import javax.swing.JLabel
-import javax.swing.JPanel
 import javax.swing.JTextField
 
-class ParentPanel: JPanel() {
+class ParentPanel: OptionGroup("Parent") {
     private val groupIdLabel = JLabel("Group Id:")
     val groupId = JTextField()
 
@@ -19,19 +17,9 @@ class ParentPanel: JPanel() {
     val relativePath = JTextField()
 
     init {
-        border = BorderFactory.createTitledBorder("Parent")
-        layout = GridLayout(0, 2)
-
-        add(groupIdLabel)
-        add(groupId)
-
-        add(artifactIdLabel)
-        add(artifactId)
-
-        add(versionLabel)
-        add(version)
-
-        add(relativePathLabel)
-        add(relativePath)
+        add(groupIdLabel, groupId)
+        add(artifactIdLabel, artifactId)
+        add(versionLabel, version)
+        add(relativePathLabel, relativePath)
     }
 }

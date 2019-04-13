@@ -19,6 +19,7 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Writer
 import java.beans.PropertyChangeListener
 import java.io.StringReader
 import java.io.StringWriter
+import javax.swing.BorderFactory
 import javax.swing.JComponent
 
 class ModelEditor(project: Project, file: VirtualFile) : FileEditor {
@@ -33,8 +34,12 @@ class ModelEditor(project: Project, file: VirtualFile) : FileEditor {
     )
 
     private val modelPanel = JBTabbedPane().apply {
+        border = BorderFactory.createEmptyBorder()
+
         editors.forEach {
-            addTab(it.name, JBScrollPane(it.getComponent()))
+            addTab(it.name, JBScrollPane(it.getComponent()).apply {
+                border = BorderFactory.createEmptyBorder()
+            })
         }
     }
 
