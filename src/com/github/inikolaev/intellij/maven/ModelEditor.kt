@@ -16,6 +16,7 @@ import com.intellij.ui.components.JBTabbedPane
 import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException
 import java.beans.PropertyChangeListener
 import java.io.StringReader
 import java.io.StringWriter
@@ -60,10 +61,14 @@ class ModelEditor(project: Project, file: VirtualFile) : FileEditor {
     }
 
     private fun updateModel(document: Document) {
-        model = reader.read(StringReader(document.text))
+        try {
+            model = reader.read(StringReader(document.text))
 
-        editors.forEach {
-            it.update(model)
+            editors.forEach {
+                it.update(model)
+            }
+        } catch (e: XmlPullParserException) {
+            // do not update model if POM is invalid
         }
     }
 
