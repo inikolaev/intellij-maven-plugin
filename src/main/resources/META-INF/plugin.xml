@@ -11,8 +11,8 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      <b>0.0.1</b>
+      <p>Initial release which includes basic artifact details editor and dependencies list view.</p>
     ]]>
   </change-notes>
 
