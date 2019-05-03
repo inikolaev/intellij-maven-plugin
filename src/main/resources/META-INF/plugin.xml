@@ -1,11 +1,11 @@
 <idea-plugin>
   <id>com.github.inikolaev.intellij.maven</id>
-  <name>Maven Plugin for IntelliJ</name>
+  <name>Maven POM Editor Plugin for IntelliJ</name>
   <version>1.0</version>
   <vendor url="https://github.com/inikolaev">Igor Nikolaev</vendor>
 
   <description><![CDATA[
-      <h1>Maven Plugin for IntelliJ</h1>
+      <h1>Maven POM Editor Plugin for IntelliJ</h1>
       <a href="https://github.com/inikolaev/intellij-maven-plugin">GitHub</a> |
       <a href="https://github.com/inikolaev/intellij-maven-plugin/issues">Issues</a>
     ]]></description>
@@ -33,5 +33,7 @@
   <actions>
     <!-- Add your actions here -->
   </actions>
+
+  <depends>org.jetbrains.idea.maven</depends>
 
 </idea-plugin>
