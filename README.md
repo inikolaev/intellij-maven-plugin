@@ -1,4 +1,4 @@
-# Maven plugin for IntelliJ
+# Maven POM Editor Plugin for IntelliJ
 
 ## Screenshots
 
