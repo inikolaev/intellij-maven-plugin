@@ -35,9 +35,15 @@ apply plugin: 'kotlin'
 
 intellij {
     plugins 'coverage'
-    pluginName 'Maven POM Editor'
+    pluginName 'Maven POM Editor Plugin for IntelliJ'
     type 'IC'
-    version '2018.3'
+    version '2017.3'
+}
+
+patchPluginXml {
+    version '0.0.1'
+    sinceBuild '173.0'
+    untilBuild ''
 }
 
 compileKotlin {
