@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.github.inikolaev.intellij.maven</id>
-  <name>Maven POM Editor Plugin for IntelliJ</name>
-  <version>1.0</version>
+  <name>Maven POM Editor</name>
+  <version>0.0.2</version>
   <vendor url="https://github.com/inikolaev">Igor Nikolaev</vendor>
 
   <description><![CDATA[
@@ -11,6 +11,9 @@
     ]]></description>
 
   <change-notes><![CDATA[
+      <b>0.0.2</b>
+      <p>Added read-only Dependency Details, Exclusions and Dependency Management sections to the Dependencies tab.</p>
+
       <b>0.0.1</b>
       <p>Initial release which includes basic artifact details editor and dependencies list view.</p>
     ]]>
