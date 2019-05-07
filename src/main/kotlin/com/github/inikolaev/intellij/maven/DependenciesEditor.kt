@@ -1,5 +1,6 @@
 package com.github.inikolaev.intellij.maven
 import com.intellij.icons.AllIcons
+import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.OptionGroup
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBList
@@ -44,7 +45,7 @@ class DependenciesEditor(name: String) : AbstractEditor(name) {
     val type = JTextField()
 
     private val scopeLabel = JLabel("Scope:")
-    val scope = JTextField()
+    val scope = ComboBox<String>(arrayOf("compile", "import", "provided", "runtime", "system", "test"))
 
     private val systemPathLabel = JLabel("System Path:")
     val systemPath = JTextField()
@@ -136,7 +137,7 @@ class DependenciesEditor(name: String) : AbstractEditor(name) {
                 version.text = dependency.version
                 classifier.text = dependency.classifier
                 type.text = dependency.type
-                scope.text = dependency.scope
+                scope.selectedItem = dependency.scope ?: "compile"
                 systemPath.text = dependency.systemPath
                 optional.isSelected = dependency.isOptional
 
@@ -165,7 +166,7 @@ class DependenciesEditor(name: String) : AbstractEditor(name) {
         version.text = ""
         classifier.text = ""
         type.text = ""
-        scope.text = ""
+        scope.selectedItem = null
         systemPath.text = ""
         optional.isSelected = false
 
