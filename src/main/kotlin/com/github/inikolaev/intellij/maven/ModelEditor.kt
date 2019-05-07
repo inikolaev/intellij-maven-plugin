@@ -1,4 +1,6 @@
 package com.github.inikolaev.intellij.maven
+import com.github.inikolaev.intellij.maven.components.editors.DependenciesEditor
+import com.github.inikolaev.intellij.maven.components.editors.OverviewEditor
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.Document

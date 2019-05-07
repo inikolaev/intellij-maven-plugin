@@ -1,4 +1,4 @@
-package com.github.inikolaev.intellij.maven
+package com.github.inikolaev.intellij.maven.components.editors
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.OptionGroup

@@ -1,5 +1,9 @@
-package com.github.inikolaev.intellij.maven
+package com.github.inikolaev.intellij.maven.components.editors
 
+import com.github.inikolaev.intellij.maven.components.panels.ArtifactPanel
+import com.github.inikolaev.intellij.maven.components.panels.ParentPanel
+import com.github.inikolaev.intellij.maven.components.panels.ProjectPanel
+import com.github.inikolaev.intellij.maven.components.panels.PropertiesPanel
 import org.apache.maven.model.Parent
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -68,7 +72,7 @@ class OverviewEditor(name: String) : TwoColumnEditor(name) {
             groupId.addChangeListener(::artifactUpdated)
             artifactId.addChangeListener(::artifactUpdated)
             version.addChangeListener(::artifactUpdated)
-//            packaging.com.github.inikolaev.intellij.maven.addChangeListener {
+//            packaging.com.github.inikolaev.intellij.maven.components.editors.addChangeListener {
 //                model.groupId = packaging.text
 //                updateDocument()
 //            }

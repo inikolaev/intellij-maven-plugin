@@ -1,4 +1,4 @@
-package com.github.inikolaev.intellij.maven
+package com.github.inikolaev.intellij.maven.components.panels
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.OptionGroup
 import javax.swing.JLabel

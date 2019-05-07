@@ -1,4 +1,4 @@
-package com.github.inikolaev.intellij.maven
+package com.github.inikolaev.intellij.maven.components.panels
 import com.intellij.ui.OptionGroup
 import javax.swing.JLabel
 import javax.swing.JTextField

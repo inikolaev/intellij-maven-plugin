@@ -1,4 +1,4 @@
-package com.github.inikolaev.intellij.maven
+package com.github.inikolaev.intellij.maven.components.editors
 import org.apache.maven.model.Model
 import javax.swing.JPanel
 
