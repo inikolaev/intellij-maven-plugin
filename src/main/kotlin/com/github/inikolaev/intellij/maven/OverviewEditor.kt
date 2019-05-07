@@ -18,12 +18,14 @@ fun JTextField.addChangeListener(listener: () -> Unit) {
 class OverviewEditor(name: String) : AbstractEditor(name) {
     private val artifactPanel = ArtifactPanel()
     private val parentPanel = ParentPanel()
+    private val propertiesPanel = PropertiesPanel()
     private val projectPanel = ProjectPanel()
 
     private val overviewPanel = JPanel().apply {
         layout = BoxLayout(this, BoxLayout.Y_AXIS)
         add(artifactPanel.createPanel())
         add(parentPanel.createPanel())
+        add(propertiesPanel.createPanel())
         add(projectPanel.createPanel())
     }
 
@@ -102,6 +104,10 @@ class OverviewEditor(name: String) : AbstractEditor(name) {
             artifactId.text = model.parent?.artifactId
             version.text = model.parent?.version
             relativePath.text = model.parent?.relativePath
+        }
+
+        with(propertiesPanel) {
+            propertyList.setListData(model.properties.entries.map { it.key.toString() to it.value.toString() }.toTypedArray())
         }
     }
 }
