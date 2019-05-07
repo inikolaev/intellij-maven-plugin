@@ -1,4 +1,5 @@
 package com.github.inikolaev.intellij.maven.components.editors
+import com.github.inikolaev.intellij.maven.components.ListComponent
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.ui.OptionGroup
@@ -14,16 +15,8 @@ import javax.swing.ListSelectionModel
 import javax.swing.SwingConstants
 
 class DependenciesEditor(name: String) : TwoColumnEditor(name) {
-    private val dependencyList = JBList(listOf<Dependency>()).apply {
-        selectionMode = ListSelectionModel.SINGLE_SELECTION
-
-        installCellRenderer<Dependency> { value ->
-            JBLabel("${value.groupId} : ${value.artifactId} : ${value.version ?: "LATEST"}", AllIcons.FileTypes.Archive, SwingConstants.LEFT).apply {
-                preferredSize = Dimension(preferredSize).apply {
-                    height += 3
-                }
-            }
-        }
+    private val dependencyList = ListComponent<Dependency> { value ->
+        JBLabel("${value.groupId} : ${value.artifactId} : ${value.version ?: "LATEST"}", AllIcons.FileTypes.Archive, SwingConstants.LEFT)
     }
 
     private val groupIdLabel = JLabel("Group Id:")
@@ -64,16 +57,8 @@ class DependenciesEditor(name: String) : TwoColumnEditor(name) {
         add(JLabel(), optional)
     }.createPanel()
 
-    private val exclusionList = JBList(listOf<Exclusion>()).apply {
-        selectionMode = ListSelectionModel.SINGLE_SELECTION
-
-        installCellRenderer<Exclusion> { value ->
-            JBLabel("${value.groupId} : ${value.artifactId}", AllIcons.FileTypes.Archive, SwingConstants.LEFT).apply {
-                preferredSize = Dimension(preferredSize).apply {
-                    height += 3
-                }
-            }
-        }
+    private val exclusionList = ListComponent<Exclusion> { value ->
+        JBLabel("${value.groupId} : ${value.artifactId}", AllIcons.FileTypes.Archive, SwingConstants.LEFT)
     }
 
     private val dependencyManagementList = JBList(listOf<Dependency>()).apply {
