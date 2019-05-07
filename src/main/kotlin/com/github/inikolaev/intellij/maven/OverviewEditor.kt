@@ -1,11 +1,8 @@
 package com.github.inikolaev.intellij.maven
 
 import org.apache.maven.model.Parent
-import java.awt.GridLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
-import javax.swing.BoxLayout
-import javax.swing.JPanel
 import javax.swing.JTextField
 
 fun JTextField.addChangeListener(listener: () -> Unit) {
@@ -16,33 +13,11 @@ fun JTextField.addChangeListener(listener: () -> Unit) {
     })
 }
 
-class OverviewEditor(name: String) : AbstractEditor(name) {
+class OverviewEditor(name: String) : TwoColumnEditor(name) {
     private val artifactPanel = ArtifactPanel()
     private val parentPanel = ParentPanel()
     private val propertiesPanel = PropertiesPanel()
     private val projectPanel = ProjectPanel()
-
-    private val leftPanel = JPanel().apply {
-        layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        add(artifactPanel.createPanel())
-        add(parentPanel.createPanel())
-        add(propertiesPanel.createPanel())
-    }
-
-    private val rightPanel = JPanel().apply {
-        layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        add(projectPanel.createPanel())
-    }
-
-    private val overviewPanel = JPanel().apply {
-        layout = GridLayout(0, 2, 8, 0)
-        add(leftPanel)
-        add(rightPanel)
-    }
-
-    override fun getComponent(): JPanel {
-        return overviewPanel
-    }
 
     private fun ensureNotEmpty(text: String?): String? = if (text.isNullOrEmpty()) {
         null
@@ -84,6 +59,11 @@ class OverviewEditor(name: String) : AbstractEditor(name) {
     }
 
     init {
+        addLeft(artifactPanel.createPanel())
+        addLeft(parentPanel.createPanel())
+        addLeft(propertiesPanel.createPanel())
+        addRight(projectPanel.createPanel())
+
         with(artifactPanel) {
             groupId.addChangeListener(::artifactUpdated)
             artifactId.addChangeListener(::artifactUpdated)

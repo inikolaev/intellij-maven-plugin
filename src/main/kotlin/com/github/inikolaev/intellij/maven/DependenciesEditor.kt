@@ -7,16 +7,13 @@ import com.intellij.ui.components.JBList
 import org.apache.maven.model.Dependency
 import org.apache.maven.model.Exclusion
 import java.awt.Dimension
-import java.awt.GridLayout
-import javax.swing.BoxLayout
 import javax.swing.JCheckBox
 import javax.swing.JLabel
-import javax.swing.JPanel
 import javax.swing.JTextField
 import javax.swing.ListSelectionModel
 import javax.swing.SwingConstants
 
-class DependenciesEditor(name: String) : AbstractEditor(name) {
+class DependenciesEditor(name: String) : TwoColumnEditor(name) {
     private val dependencyList = JBList(listOf<Dependency>()).apply {
         selectionMode = ListSelectionModel.SINGLE_SELECTION
 
@@ -110,26 +107,13 @@ class DependenciesEditor(name: String) : AbstractEditor(name) {
         add(exclusionDetailsGroupIdLabel, exclusionDetailsGroupId)
     }.createPanel()
 
-    private val leftPanel = JPanel().apply {
-        layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        add(dependenciesListPanel)
-        add(dependencyManagementPanel)
-    }
-
-    private val rightPanel = JPanel().apply {
-        layout = BoxLayout(this, BoxLayout.Y_AXIS)
-        add(dependencyDetailsPanel)
-        add(exclusionsPanel)
-        add(exclusionDetailsPanel)
-    }
-
-    private val dependenciesPanel = JPanel().apply {
-        layout = GridLayout(0, 2, 8, 0)
-        add(leftPanel)
-        add(rightPanel)
-    }
-
     init {
+        addLeft(dependenciesListPanel)
+        addLeft(dependencyManagementPanel)
+        addRight(dependencyDetailsPanel)
+        addRight(exclusionsPanel)
+        addRight(exclusionDetailsPanel)
+
         dependencyList.addListSelectionListener {
             dependencyList.selectedValue?.let { dependency ->
                 artifactId.text = dependency.artifactId
@@ -153,10 +137,6 @@ class DependenciesEditor(name: String) : AbstractEditor(name) {
                 exclusionDetailsGroupId.text = exclusion.groupId
             }
         }
-    }
-
-    override fun getComponent(): JPanel {
-        return dependenciesPanel
     }
 
     override fun onModelUpdated() {
