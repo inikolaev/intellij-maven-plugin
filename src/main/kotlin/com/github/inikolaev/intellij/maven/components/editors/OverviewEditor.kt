@@ -102,7 +102,8 @@ class OverviewEditor(name: String) : TwoColumnEditor(name) {
         }
 
         with(propertiesPanel) {
-            propertyList.setListData(model.properties.entries.map { it.key.toString() to it.value.toString() }.toTypedArray())
+            propertiesPanel.setListData(model.properties.entries.map { it.key.toString() to it.value.toString() })
+            //propertyList.setListData(model.properties.entries.map { it.key.toString() to it.value.toString() }.toTypedArray())
         }
     }
 }
