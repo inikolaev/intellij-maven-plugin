@@ -19,6 +19,7 @@ import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 import org.apache.maven.model.io.xpp3.MavenXpp3Writer
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException
+import org.jetbrains.annotations.NotNull
 import java.beans.PropertyChangeListener
 import java.io.StringReader
 import java.io.StringWriter
@@ -30,6 +31,7 @@ class ModelEditor(project: Project, file: VirtualFile) : FileEditor {
     private val writer = MavenXpp3Writer()
     private val reader = MavenXpp3Reader()
     private val document = FileDocumentManager.getInstance().getDocument(file)
+    private val file = file;
 
     private val editors = listOf(
         OverviewEditor("Overview"),
@@ -141,5 +143,10 @@ class ModelEditor(project: Project, file: VirtualFile) : FileEditor {
 
     override fun dispose() {
 
+    }
+
+    @NotNull
+    override fun getFile(): VirtualFile? {
+        return file;
     }
 }
